@@ -21,9 +21,6 @@ with open("test_settings.json") as jsonFile:
 desired_caps = {
     "platformName": "Android",
     "appium:automationName": "uiautomator2",
-    "momentum:user": cloudUser,
-    "momentum:token": cloudToken,
-    "momentum:gw": cloudAndroidDeviceName,
     "appium:app": cloudAndroidApp,
     "appium:autoGrantPermissions": True,
     "appium:language": "en",
@@ -31,7 +28,12 @@ desired_caps = {
     "appium:fullReset": True,
     "appium:noReset": False,
     "appium:deviceName": "",
-    "appium:udid": ""
+    "appium:udid": "",
+    "momentum:options": {
+            "user": cloudUser,
+            "token": cloudToken,
+            "gw": cloudAndroidDeviceName,
+        }
 }
 
 class TestPageObjectModel():
