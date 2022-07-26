@@ -78,10 +78,6 @@ python3 -m pytest examples/local_test/local_ios_test.py --alluredir=allure_resul
 python3 -m pytest examples/pom_test/tests/pom_android_test.py --alluredir=allure_results
 ```
  
-### Appium Inspector usage with Momentum Suite devices:
- 
-![image](https://user-images.githubusercontent.com/105457661/173579734-ae2ceae2-70c1-4c00-b58d-cdf81c0b29ef.png)
-
  
 ### Allure Reporting
  
@@ -93,4 +89,6 @@ allure serve allure_results
 ## Getting Help
  
 If you are running into any issues or have any queries, please check [Momentum Suite Contact page](https://www.momentumsuite.com/contact/) or get in touch with us.
+ 
+Our Technical Documentation space is [here](https://www.momentumsuite.com/docs/).
 
