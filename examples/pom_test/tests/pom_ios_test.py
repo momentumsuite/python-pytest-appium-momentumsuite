@@ -23,9 +23,6 @@ with open("test_settings.json") as jsonFile:
 desired_caps = {
     "platformName": "ios",
     "appium:automationName": "XCUITest",
-    "momentum:user": cloudUser,
-    "momentum:token": cloudToken,
-    "momentum:gw": cloudIosDeviceName,
     "appium:app": cloudIosApp,
     "appium:autoGrantPermissions": True,
     "appium:language": "en",
@@ -33,7 +30,12 @@ desired_caps = {
     "appium:fullReset": True,
     "appium:noReset": False,
     "appium:deviceName": "",
-    "appium:udid": ""
+    "appium:udid": "",
+    "momentum:options": {
+            "user": cloudUser,
+            "token": cloudToken,
+            "gw": cloudIosDeviceName,
+        }
 }
 
 class TestPageObjectModel():
