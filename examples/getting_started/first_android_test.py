@@ -4,8 +4,7 @@ from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-#from appium.options.android import UiAutomator2Options
-#from appium.options.common import AppiumOptions
+from appium.options.android import UiAutomator2Options
 import time
 
 with open("test_settings.json") as jsonFile:
@@ -19,48 +18,25 @@ with open("test_settings.json") as jsonFile:
     cloudAndroidDeviceName = jsonObject['CLOUD']['android']['momentum.deviceList'][0]
     print(cloudHost)
 
-# https://github.com/appium/python-client/issues/726
-
-#options = UiAutomator2Options().load_capabilities({
-#'platformName': 'Android',
-#'appium:automationName': 'uiautomator2',
-#'appium:app': cloudAndroidApp,
-#'appium:autoGrantPermissions': True,
-#'appium:language': 'en',
-#'appium:locale': 'en',
-#'appium:fullReset': True,
-#'appium:noReset': False,
-#'appium:deviceName': '',
-#'appium:udid': '',
-#'momentum:options': {
-#            'user': cloudUser,
-#            'token': cloudToken,
-#            'gw': cloudAndroidDeviceName,
-#        },
-#})
-
-#driver = webdriver.Remote(cloudHost, options=options)
-
-
-desired_caps = {
-    "platformName": "Android",
-    "appium:automationName": "uiautomator2",
-    "appium:app": cloudAndroidApp,
-    "appium:autoGrantPermissions": True,
-    "appium:language": "en",
-    "appium:locale": "en",
-    "appium:fullReset": True,
-    "appium:noReset": False,
-    "appium:deviceName": "",
-    "appium:udid": "",
-    "momentum:options": {
-            "user": cloudUser,
-            "token": cloudToken,
-            "gw": cloudAndroidDeviceName,
+options = UiAutomator2Options().load_capabilities({
+'platformName': 'Android',
+'appium:automationName': 'uiautomator2',
+'appium:app': cloudAndroidApp,
+'appium:autoGrantPermissions': True,
+'appium:language': 'en',
+'appium:locale': 'en',
+'appium:fullReset': True,
+'appium:noReset': False,
+'appium:deviceName': '',
+'appium:udid': '',
+'momentum:options': {
+            'user': cloudUser,
+            'token': cloudToken,
+            'gw': cloudAndroidDeviceName,
         },
-}
+})
 
-driver = webdriver.Remote(cloudHost, desired_caps)
+driver = webdriver.Remote(cloudHost, options=options)
 
 def test_first_android():
   elUsername = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ID, "username_txt")))

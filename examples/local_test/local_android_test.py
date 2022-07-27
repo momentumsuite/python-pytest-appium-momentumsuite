@@ -4,6 +4,7 @@ from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from appium.options.android import UiAutomator2Options
 import time
 
 with open("test_settings.json") as jsonFile:
@@ -15,19 +16,19 @@ with open("test_settings.json") as jsonFile:
     localAndroidDeviceName = jsonObject['LOCAL']['android']['deviceName']
     print(localHost)
 
-desired_caps = {
-    "platformName": "Android",
-    "appium:automationName": "uiautomator2",
-    "appium:app": localAndroidApp,
-    "appium:autoGrantPermissions": True,
-    "appium:language": "en",
-    "appium:locale": "en",
-    "appium:fullReset": True,
-    "appium:noReset": False,
-    "appium:deviceName": localAndroidDeviceName
-}
+    options = UiAutomator2Options().load_capabilities({
+    'platformName': 'Android',
+    'appium:automationName': 'uiautomator2',
+    'appium:app': localAndroidApp,
+    'appium:autoGrantPermissions': True,
+    'appium:language': 'en',
+    'appium:locale': 'en',
+    'appium:fullReset': True,
+    'appium:noReset': False,
+    'appium:deviceName': localAndroidDeviceName
+    })
 
-driver = webdriver.Remote(localHost, desired_caps, direct_connection=True)
+driver = webdriver.Remote(localHost, options=options)
 
 def test_local_android():
   elUsername = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ID, "username_txt")))

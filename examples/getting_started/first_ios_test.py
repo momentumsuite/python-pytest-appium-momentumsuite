@@ -4,6 +4,7 @@ from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from appium.options.ios import XCUITestOptions
 import time
 
 with open("test_settings.json") as jsonFile:
@@ -17,25 +18,25 @@ with open("test_settings.json") as jsonFile:
     cloudIosDeviceName = jsonObject['CLOUD']['ios']['momentum.deviceList'][0]
     print(cloudHost)
 
-desired_caps = {
-    "platformName": "iOS",
-    "appium:automationName": "XCUITest",
-    "appium:app": cloudIosApp,
-    "appium:autoAcceptAlerts": True,
-    "appium:language": "en",
-    "appium:locale": "en",
-    "appium:fullReset": True,
-    "appium:noReset": False,
-    "appium:deviceName": "",
-    "appium:udid": "",
-        "momentum:options": {
-            "user": cloudUser,
-            "token": cloudToken,
-            "gw": cloudIosDeviceName,
-        },
-}
+    options = XCUITestOptions().load_capabilities({
+    'platformName': 'iOS',
+    'appium:automationName': 'XCUITest',
+    'appium:app': cloudIosApp,
+    'appium:autoAcceptAlerts': True,
+    'appium:language': 'en',
+    'appium:locale': 'en',
+    'appium:fullReset': True,
+    'appium:noReset': False,
+    'appium:deviceName': '',
+    'appium:udid': '',
+    'momentum:options': {
+                'user': cloudUser,
+                'token': cloudToken,
+                'gw': cloudIosDeviceName,
+            },
+    })
 
-driver = webdriver.Remote(cloudHost, desired_caps)
+driver = webdriver.Remote(cloudHost, options=options)
 
 def test_first_ios():
   elOne = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.XPATH, "(//*[contains(@label , '2')])[1]")))
