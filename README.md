@@ -14,7 +14,7 @@
 
 **Requirements:**
 
-* [Python](https://www.python.org/downloads/) version 3.7+ (required by [Appium Python Client](https://github.com/appium/python-client) v2.2 and pytest)
+* [Python](https://www.python.org/downloads/) version 3.7+ (required by [Appium Python Client](https://github.com/appium/python-client) v2.6 and pytest)
 * Install the [Allure command-line tool](https://www.npmjs.com/package/allure-commandline) (required to process the results directory after test run)
 
 **Install the dependencies:**
