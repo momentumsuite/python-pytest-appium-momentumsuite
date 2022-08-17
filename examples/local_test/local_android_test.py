@@ -14,6 +14,7 @@ with open("test_settings.json") as jsonFile:
     localHost = jsonObject['LOCAL']['host']
     localAndroidApp = jsonObject['LOCAL']['android']['app']
     localAndroidDeviceName = jsonObject['LOCAL']['android']['deviceName']
+    localRemoteDebugProxy = jsonObject['LOCAL']['android']['remoteDebugProxy']
     print(localHost)
 
     options = UiAutomator2Options().load_capabilities({
@@ -25,7 +26,8 @@ with open("test_settings.json") as jsonFile:
     'appium:locale': 'en',
     'appium:fullReset': True,
     'appium:noReset': False,
-    'appium:deviceName': localAndroidDeviceName
+    'appium:deviceName': localAndroidDeviceName,
+    'appium.remoteDebugProxy': localRemoteDebugProxy,
     })
 
 driver = webdriver.Remote(localHost, options=options)

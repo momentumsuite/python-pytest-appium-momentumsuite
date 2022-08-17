@@ -14,6 +14,7 @@ with open("test_settings.json") as jsonFile:
     localHost = jsonObject['LOCAL']['host']
     localIosApp = jsonObject['LOCAL']['ios']['app']
     localIosDeviceName = jsonObject['LOCAL']['ios']['deviceName']
+    localIosRemoteDebugProxy = jsonObject['LOCAL']['ios']['remoteDebugProxy']
     print(localHost)
 
     options = XCUITestOptions().load_capabilities({
@@ -25,7 +26,8 @@ with open("test_settings.json") as jsonFile:
     'appium:locale': 'en',
     'appium:fullReset': True,
     'appium:noReset': False,
-    'appium:deviceName': localIosDeviceName
+    'appium:deviceName': localIosDeviceName,
+    'appium.remoteDebugProxy': localIosRemoteDebugProxy,
     })
 
 driver = webdriver.Remote(localHost, options=options)

@@ -15,9 +15,8 @@ with open("test_settings.json") as jsonFile:
     cloudToken = jsonObject['CLOUD']['momentum.token']
     cloudHost = jsonObject['CLOUD']['momentum.host']
     cloudIosApp = jsonObject['CLOUD']['ios']['momentum.app']
-    cloudRemoteDebugProxy = jsonObject['CLOUD']['remoteDebugProxy']
     cloudIosDeviceName = jsonObject['CLOUD']['ios']['momentum.deviceList'][0]
-
+    cloudRemoteIosDebugProxy = jsonObject['CLOUD']['remoteDebugProxy']
     print(cloudHost)
 
     options = XCUITestOptions().load_capabilities({
@@ -31,7 +30,7 @@ with open("test_settings.json") as jsonFile:
     'appium:noReset': False,
     'appium:deviceName': '',
     'appium:udid': '',
-    'appium.remoteDebugProxy': cloudRemoteDebugProxy,
+    'appium.remoteDebugProxy': cloudRemoteIosDebugProxy,
     'momentum:options': {
                 'user': cloudUser,
                 'token': cloudToken,

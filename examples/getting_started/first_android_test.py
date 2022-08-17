@@ -15,8 +15,8 @@ with open("test_settings.json") as jsonFile:
     cloudToken = jsonObject['CLOUD']['momentum.token']
     cloudHost = jsonObject['CLOUD']['momentum.host']
     cloudAndroidApp = jsonObject['CLOUD']['android']['momentum.app']
-    cloudRemoteDebugProxy = jsonObject['CLOUD']['remoteDebugProxy']
     cloudAndroidDeviceName = jsonObject['CLOUD']['android']['momentum.deviceList'][0]
+    cloudRemoteAndroidDebugProxy = jsonObject['CLOUD']['remoteDebugProxy']
     print(cloudHost)
 
 options = UiAutomator2Options().load_capabilities({
@@ -30,7 +30,7 @@ options = UiAutomator2Options().load_capabilities({
 'appium:noReset': False,
 'appium:deviceName': '',
 'appium:udid': '',
-'appium.remoteDebugProxy': cloudRemoteDebugProxy,
+'appium.remoteDebugProxy': cloudRemoteAndroidDebugProxy ,
 'momentum:options': {
             'user': cloudUser,
             'token': cloudToken,
