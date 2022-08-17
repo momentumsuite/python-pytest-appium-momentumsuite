@@ -17,7 +17,6 @@ with open("test_settings.json") as jsonFile:
     cloudAndroidApp = jsonObject['CLOUD']['android']['momentum.app']
     cloudRemoteDebugProxy = jsonObject['CLOUD']['remoteDebugProxy']
     cloudAndroidDeviceName = jsonObject['CLOUD']['android']['momentum.deviceList'][0]
-
     print(cloudHost)
 
 options = UiAutomator2Options().load_capabilities({

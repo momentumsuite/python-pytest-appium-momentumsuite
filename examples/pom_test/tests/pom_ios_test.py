@@ -20,6 +20,7 @@ with open("test_settings.json") as jsonFile:
     cloudIosApp = jsonObject['CLOUD']['ios']['momentum.app']
     cloudRemoteDebugProxy = jsonObject['CLOUD']['remoteDebugProxy']
     cloudIosDeviceName = jsonObject['CLOUD']['ios']['momentum.deviceList'][0]
+
     print(cloudHost)
 
     options = XCUITestOptions().load_capabilities({
